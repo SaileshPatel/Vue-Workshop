@@ -21,11 +21,8 @@ Vue.component('form-component', {
     template: `
         <form>
         <div class="form-row">
-        <form-input form-type="email" column-size="col-md-6" element-id="inputEmail14" placeholder-text="Email"></form-input>
-            <div class="form-group col-md-6">
-                <label for="inputPassword4">Password</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-            </div>
+            <form-input form-type="email" column-size="col-md-6" element-id="inputEmail14" placeholder-text="Email"></form-input>
+            <form-input form-type="password" column-size="col-md-6" element-id="inputPassword4" placeholder-text="Password"></form-input>
         </div>
         <div class="form-group">
             <label for="inputAddress">Address</label>
