@@ -13,6 +13,23 @@ Vue.component('form-input', {
     `
 });
 
+Vue.component('selection-box', {
+    props: ['columnSize', 'selection', 'elementId', 'inputName'],
+    data: function(){
+        return {
+
+        }
+    },
+    template: ` 
+        <div class="form-group col-md-4">
+            <label v-bind:for="elementId">{{inputName}}</label>
+            <select v-bind:id="elementId" class="form-control">
+                <option v-for="item in selection">{{item}}</option>
+            </select>
+        </div>  
+    `
+})
+
 Vue.component('form-component', {
     data: function () {
       return {
@@ -32,13 +49,7 @@ Vue.component('form-component', {
         </div>
         <div class="form-row">
             <form-input label-text='City' form-type="text" column-size="col-md-6" element-id="inputCity"></form-input>
-            <div class="form-group col-md-4">
-                <label for="inputState">Region</label>
-                <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                </select>
-            </div>
+            <selection-box input-name="Region" column-size="col-md-4" v-bind:selection="['West Midlands', 'East Midlands']" element-id="inputState"></selection-box>
             <form-input label-text='Postcode' form-type="text" column-size="col-md-2" element-id="inputZip"></form-input>
         </div>
         <div class="form-group">
