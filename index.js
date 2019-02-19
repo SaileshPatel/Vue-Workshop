@@ -1,3 +1,17 @@
+Vue.component('form-input', {
+    data: function(){
+        return {
+
+        }
+    }, 
+    template: `
+    <div class="form-group col-md-6">
+        <label for="inputEmail4">Email</label>
+        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+    </div>
+    `
+});
+
 Vue.component('form-component', {
     data: function () {
       return {
