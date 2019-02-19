@@ -1,13 +1,14 @@
 Vue.component('form-input', {
+    props: ['formType', 'columnSize', 'elementId', 'placeholderText'],
     data: function(){
         return {
 
         }
     }, 
     template: `
-    <div class="form-group col-md-6">
-        <label for="inputEmail4">Email</label>
-        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+    <div class="form-group" v-bind:class="columnSize">
+        <label v-bind:for="elementId">Email</label>
+        <input v-bind:type="formType" class="form-control" v-bind:id="elementId" v-bind:placeholder="placeholderText">
     </div>
     `
 });
@@ -20,10 +21,7 @@ Vue.component('form-component', {
     template: `
         <form>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-            </div>
+        <form-input form-type="email" column-size="col-md-6" element-id="inputEmail14" placeholder-text="Email"></form-input>
             <div class="form-group col-md-6">
                 <label for="inputPassword4">Password</label>
                 <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
