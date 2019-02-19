@@ -20,13 +20,30 @@ Vue.component('selection-box', {
 
         }
     },
-    template: ` 
+    template: `
         <div class="form-group col-md-4">
             <label v-bind:for="elementId">{{inputName}}</label>
             <select v-bind:id="elementId" class="form-control">
                 <option v-for="item in selection">{{item}}</option>
             </select>
         </div>  
+    `
+});
+
+Vue.component('check-box', {
+    props: ['elementId', 'inputName'],
+    data: function(){
+        return {
+
+        }
+    },
+    template: `
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" v-bind:id="elementId">
+            <label class="form-check-label" v-bind:for="elementId">
+                {{inputName}}
+            </label>
+        </div>
     `
 })
 
@@ -53,12 +70,7 @@ Vue.component('form-component', {
             <form-input label-text='Postcode' form-type="text" column-size="col-md-2" element-id="inputZip"></form-input>
         </div>
         <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    Check me out
-                </label>
-            </div>
+            <check-box elementId="gridCheck" inputName="Check me out"></check-box>
         </div>
         <button type="submit" class="btn btn-primary">Sign in</button>
     </form>
