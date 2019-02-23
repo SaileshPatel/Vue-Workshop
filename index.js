@@ -72,7 +72,7 @@ Vue.component('form-component', {
         <div class="form-group">
             <check-box elementId="gridCheck" inputName="Check me out"></check-box>
         </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     `
   })
