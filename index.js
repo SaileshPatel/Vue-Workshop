@@ -2,7 +2,7 @@ Vue.component('form-input', {
     props: ['formType', 'columnSize', 'elementId', 'placeholderText', 'labelText'],
     data: function(){
         return {
-
+            input: '',
         }
     }, 
     template: `
@@ -17,7 +17,7 @@ Vue.component('selection-box', {
     props: ['columnSize', 'selection', 'elementId', 'inputName'],
     data: function(){
         return {
-
+            optionSelected: ''
         }
     },
     template: `
@@ -34,7 +34,7 @@ Vue.component('check-box', {
     props: ['elementId', 'inputName'],
     data: function(){
         return {
-
+            checked: false,
         }
     },
     template: `
