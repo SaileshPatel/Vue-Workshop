@@ -8,7 +8,7 @@ Vue.component('form-input', {
     template: `
     <div class="form-group" v-bind:class="columnSize">
         <label v-bind:for="elementId">{{labelText}}</label>
-        <input v-bind:type="formType" class="form-control" v-bind:id="elementId" v-bind:placeholder="placeholderText">
+        <input v-model="input" v-bind:type="formType" class="form-control" v-bind:id="elementId" v-bind:placeholder="placeholderText">
     </div>
     `
 });
@@ -39,7 +39,7 @@ Vue.component('check-box', {
     },
     template: `
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" v-bind:id="elementId">
+            <input class="form-check-input" type="checkbox" v-bind:id="elementId" v-model="checked">
             <label class="form-check-label" v-bind:for="elementId">
                 {{inputName}}
             </label>
