@@ -50,6 +50,15 @@ Vue.component('check-box', {
 Vue.component('form-component', {
     data: function () {
       return {
+          email: '',
+          password: '',
+          address: '',
+          address2: '',
+          city: '',
+          region: '',
+          postcode: '',
+          checked: '',
+          submitted: false
       }
     },
     template: `
