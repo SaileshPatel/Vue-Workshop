@@ -17,13 +17,13 @@ Vue.component('selection-box', {
     props: ['columnSize', 'selection', 'elementId', 'inputName'],
     data: function(){
         return {
-            optionSelected: ''
+            optionSelected: this.selection[0],
         }
     },
     template: `
         <div class="form-group col-md-4">
             <label v-bind:for="elementId">{{inputName}}</label>
-            <select v-bind:id="elementId" class="form-control">
+            <select v-bind:id="elementId" class="form-control" v-model="optionSelected">
                 <option v-for="item in selection">{{item}}</option>
             </select>
         </div>  
