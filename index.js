@@ -8,7 +8,7 @@ Vue.component('form-input', {
     template: `
     <div class="form-group" v-bind:class="columnSize">
         <label v-bind:for="elementId">{{labelText}}</label>
-        <input v-model="input" v-bind:type="formType" class="form-control" v-bind:id="elementId" v-bind:placeholder="placeholderText" v-on:keypress="sendInformation();">
+        <input v-model="input" v-bind:type="formType" class="form-control" v-bind:id="elementId" v-bind:placeholder="placeholderText" v-on:keyup="sendInformation();">
     </div>
     `,
     methods: {
