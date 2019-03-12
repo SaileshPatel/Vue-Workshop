@@ -66,22 +66,27 @@ Vue.component('form-component', {
           submitted: false
       }
     },
+    methods: {
+        displayInfo: function(val){
+            this[val['name']] = val['data'];
+        }
+    },
     template: `
         <form>
         <div class="form-row">
-            <form-input name="email" label-text='Email' form-type="email" column-size="col-md-6" element-id="inputEmail14" placeholder-text="Email"></form-input>
-            <form-input name="password" label-text='Password' form-type="password" column-size="col-md-6" element-id="inputPassword4" placeholder-text="Password"></form-input>
+            <form-input name="email" label-text='Email' form-type="email" column-size="col-md-6" element-id="inputEmail14" placeholder-text="Email" v-on:send-form-input="displayInfo"></form-input>
+            <form-input name="password" label-text='Password' form-type="password" column-size="col-md-6" element-id="inputPassword4" placeholder-text="Password" v-on:send-form-input="displayInfo"></form-input>
         </div>
         <div class="form-group">
-            <form-input name="address" label-text='Address' form-type="text" element-id="inputAddress" placeholder-text="1234 Main St"></form-input>
+            <form-input name="address" label-text='Address' form-type="text" element-id="inputAddress" placeholder-text="1234 Main St" v-on:send-form-input="displayInfo"></form-input>
         </div>
         <div class="form-group">
-            <form-input name="address2" label-text='Address 2' form-type="text" element-id="inputAddress2" placeholder-text="Apartment, studio, or floor"></form-input>
+            <form-input name="address2" label-text='Address 2' form-type="text" element-id="inputAddress2" placeholder-text="Apartment, studio, or floor"v-on:send-form-input="displayInfo"></form-input>
         </div>
         <div class="form-row">
-            <form-input name="city" label-text='City' form-type="text" column-size="col-md-6" element-id="inputCity"></form-input>
+            <form-input name="city" label-text='City' form-type="text" column-size="col-md-6" element-id="inputCity" v-on:send-form-input="displayInfo"></form-input>
             <selection-box input-name="Region" column-size="col-md-4" v-bind:selection="['West Midlands', 'East Midlands']" element-id="inputState"></selection-box>
-            <form-input name="postcode" label-text='Postcode' form-type="text" column-size="col-md-2" element-id="inputZip"></form-input>
+            <form-input name="postcode" label-text='Postcode' form-type="text" column-size="col-md-2" element-id="inputZip" v-on:send-form-input="displayInfo"></form-input>
         </div>
         <div class="form-group">
             <check-box elementId="gridCheck" inputName="Check me out"></check-box>
