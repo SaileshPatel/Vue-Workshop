@@ -28,7 +28,6 @@ Vue.component('selection-box', {
     methods: {
         sendOption: function(){
             this.$emit('send-option', {name: this.name, data: this.optionSelected});
-            console.log("aye");
         }
     },
     template: `
@@ -42,7 +41,7 @@ Vue.component('selection-box', {
 });
 
 Vue.component('check-box', {
-    props: ['elementId', 'inputName'],
+    props: ['elementId', 'inputName', 'name'],
     data: function(){
         return {
             checked: false,
@@ -55,7 +54,12 @@ Vue.component('check-box', {
                 {{inputName}}
             </label>
         </div>
-    `
+    `, 
+    watch: {
+        checked: function(newValue, oldValue){
+            this.$emit('check-box-change', {name: this.name, data: newValue});
+        }
+    }
 })
 
 Vue.component('form-component', {
@@ -95,7 +99,7 @@ Vue.component('form-component', {
             <form-input name="postcode" label-text='Postcode' form-type="text" column-size="col-md-2" element-id="inputZip" v-on:send-form-input="displayInfo"></form-input>
         </div>
         <div class="form-group">
-            <check-box elementId="gridCheck" inputName="Check me out"></check-box>
+            <check-box name="checked" elementId="gridCheck" inputName="Check me out" v-on:check-box-change="displayInfo"></check-box>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
