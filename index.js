@@ -19,16 +19,22 @@ Vue.component('form-input', {
 });
 
 Vue.component('selection-box', {
-    props: ['columnSize', 'selection', 'elementId', 'inputName'],
+    props: ['columnSize', 'selection', 'elementId', 'inputName', 'name'],
     data: function(){
         return {
             optionSelected: this.selection[0],
         }
     },
+    methods: {
+        sendOption: function(){
+            this.$emit('send-option', {name: this.name, data: this.optionSelected});
+            console.log("aye");
+        }
+    },
     template: `
         <div class="form-group col-md-4">
             <label v-bind:for="elementId">{{inputName}}</label>
-            <select v-bind:id="elementId" class="form-control" v-model="optionSelected">
+            <select v-bind:id="elementId" class="form-control" v-model="optionSelected" v-on:input="sendOption">
                 <option v-for="item in selection">{{item}}</option>
             </select>
         </div>  
@@ -85,7 +91,7 @@ Vue.component('form-component', {
         </div>
         <div class="form-row">
             <form-input name="city" label-text='City' form-type="text" column-size="col-md-6" element-id="inputCity" v-on:send-form-input="displayInfo"></form-input>
-            <selection-box input-name="Region" column-size="col-md-4" v-bind:selection="['West Midlands', 'East Midlands']" element-id="inputState"></selection-box>
+            <selection-box name="region" input-name="Region" column-size="col-md-4" v-bind:selection="['West Midlands', 'East Midlands']" element-id="inputState" v-on:send-option="displayInfo"></selection-box>
             <form-input name="postcode" label-text='Postcode' form-type="text" column-size="col-md-2" element-id="inputZip" v-on:send-form-input="displayInfo"></form-input>
         </div>
         <div class="form-group">
